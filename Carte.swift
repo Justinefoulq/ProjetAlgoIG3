@@ -195,6 +195,52 @@ class Carte : CarteProtocol {
     // pre : Elle prend en entrée une Carte, suivie de sa position, mais aussi une deuxième position, correspondant à la case ciblée, l'endroit où l'on veut viser (Rappel : Position du front -> F1,F2,F3,A1,A2,A3 et la casse ne compte pas)
     // post : Elle renvoie un Booléen, True si la case ciblée est à portée, False sinon. Si position inexistante renvoie False aussi.
     func estaSaportee (positionC : String, positionCible : String) -> Bool{
-		
+		switch self.getNom() {
+			case "Soldat":
+				switch positionC {
+					case F1:
+					case F2:
+					case F3:
+					case A1:
+					case A2:
+					case A3:
+				}
+			case "Garde":
+				switch positionC {
+					case F1:
+					case F2:
+					case F3:
+					case A1:
+					case A2:
+					case A3:
+				}
+			case "Archer":
+				switch positionC {
+					case F1:
+					case F2:
+					case F3:
+					case A1:
+					case A2:
+					case A3:
+				}
+			case "Roi1":
+				switch positionC {
+					case F1:
+					case F2:
+					case F3:
+					case A1:
+					case A2:
+					case A3:
+				}
+			case "Roi2":
+				switch positionC {
+					case F1:
+					case F2:
+					case F3:
+					case A1:
+					case A2:
+					case A3:
+				}
+		}
 	}
 }
