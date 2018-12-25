@@ -4,8 +4,7 @@ enum ShouldNotHappenError: Error {
     case PasUneCase
 }
 
-
-class Front : Sequence {
+class Front {
 	
 	private var fr : [Carte?]
 	
@@ -19,7 +18,7 @@ class Front : Sequence {
 
 	// makeItFront : Front -> ItFront
 	// Crée un itérateur sur les cartes du front pour le parcourir dans l'ordre F1,F2,F3,A1,A2,A3
-	func makeItFront() -> ItFront{}
+	//func makeItFront() -> ItFront{}
 
 	//estLibre : String x Front -> Bool
 	//Cette fonction permet de savoir si la case selectionnée est valide : sans unité placée dessus, Si jamais la case demandée est en seconde ligne (parmi les A ou a) il faut vérifier qu'il y ait bien une unité sur la case F ou f correspondant.
@@ -28,27 +27,27 @@ class Front : Sequence {
 	func estLibre(position : String) -> Bool{
 		var estok : Bool = false
 		switch position {
-			case "F1" || "f1":
+			case "F1" :
 				if self.fr[0]  == nil{
 					estok = true
 				}
-			case "F2" || "f2":
+			case "F2" :
 				if self.fr[1]  == nil{
 					estok = true
 				}
-			case "F3" || "f3":
+			case "F3" :
 				if self.fr[2]  == nil{
 					estok = true
 				}
-			case "A1" || "a1":
+			case "A1" :
 				if (self.fr[3]  == nil) && (self.fr[0] != nil){
 					estok = true
 				}
-			case "A2" || "a2":
+			case "A2" :
 				if (self.fr[4]  == nil) && (self.fr[1] != nil){
 					estok = true
 				}
-			case "A3" || "a3":
+			case "A3" :
 				if (self.fr[5]  == nil) && (self.fr[3] != nil){
 					estok = true
 				}
@@ -62,7 +61,7 @@ class Front : Sequence {
 	//pre : Elle prend en paramètre un Front
 	//post : Elle renvoit True si le front est totalement vide, False sinon
 	func estVide() -> Bool{
-		return (self.fr[0] == vide) && (self.fr[1] == vide) && (self.fr[2] == vide) && (self.fr[3] == vide) && (self.fr[4] == vide) && (self.fr[5] == vide)
+		return (self.fr[0] == nil) && (self.fr[1] == nil) && (self.fr[2] == nil) && (self.fr[3] == nil) && (self.fr[4] == nil) && (self.fr[5] == nil)
 	}
 
 	//estCaseVide : Front x String-> Bool
@@ -71,28 +70,28 @@ class Front : Sequence {
 	//post : Elle renvoit True si la case sur le front est vide, False sinon. Renvoie une ERREUR si la position n'existe pas
 	func estCaseVide (pos : String) throws -> Bool{
 		var estok : Bool = false
-		switch position {
-			case "F1" || "f1":
+		switch pos {
+			case "F1":
 				if self.fr[0]  == nil{
 					estok = true
 				}
-			case "F2" || "f2":
+			case "F2" :
 				if self.fr[1]  == nil{
 					estok = true
 				}
-			case "F3" || "f3":
+			case "F3" :
 				if self.fr[2]  == nil{
 					estok = true
 				}
-			case "A1" || "a1":
+			case "A1" :
 				if self.fr[3]  == nil{
 					estok = true
 				}
-			case "A2" || "a2":
+			case "A2" :
 				if self.fr[4]  == nil{
 					estok = true
 				}
-			case "A3" || "a3":
+			case "A3" :
 				if self.fr[5]  == nil{
 					estok = true
 				}
@@ -106,11 +105,18 @@ class Front : Sequence {
 	//Cette fonction permet de remettre à zero les dégats subis, et de passer en mode défensif toutes les cartes du front
 	//pre : Elle prend en entrée un Front
 	//post : Ne renvoie rien
-	mutating func reinit (){
+	func reinit (){
 		var i : Int = 0
+		var c : Carte
 		while i<6{
-			self.fr[i].setDeg(nbr : 0)
-			self.fr[i].modeDefensif()
+			if self.fr[i] != nil{
+				c = self.fr[i]!
+				do {
+					try c.setDeg(nbr : 0)
+				} catch {}
+				c.modeDefensif()
+				self.fr[i] = c
+			}
 			i=i+1
 		}
 	}
@@ -123,9 +129,65 @@ class Front : Sequence {
 		return c.estaSaPortee(positionC : positionC, positionCible : "F1") || c.estaSaPortee(positionC : positionC, positionCible : "F2") || c.estaSaPortee(positionC : positionC, positionCible : "F3") || c.estaSaPortee(positionC : positionC, positionCible : "A1") || c.estaSaPortee(positionC : positionC, positionCible : "A2") || c.estaSaPortee(positionC : positionC, positionCible : "A3")
 	}
 
-	
+	//getCarteFront : Front x String -> (Carte | Vide)
+	//Cette fonction permet a partir d'une position sur le Front de savoir la carte qui s'y trouve.
+	// pre : Elle prend en entrée un Front, et une position de ce Front.
+	//post : Elle renvoie la carte associée à cette position du Front. Si il n'y a pas de carte à cet emplacement, renvoie Vide.
+	func getCarteFront (position : String) -> Carte?{
+		switch position {
+			case "F1":
+				return self.fr[0]
+			case "F2":
+				return self.fr[1]
+			case "F3":
+				return self.fr[2]
+			case "A1":
+				return self.fr[3]
+			case "A2":
+				return self.fr[4]
+			case "A3":
+				return self.fr[5]
+			default :
+				return nil
+		}
+	}
 
+	//supprimerCarteFront : Front x Carte -> Front
+	//Cette ingénieuse fonction doit supprimer la carte renseignée du Front indiqué. La case correspondante sera donc Vide
+	//pre : Elle prend en entrée un Front, et une Carte de ce Front (Attention, plusieurs position peuvent contenir la même carte... Utiliser "===" !). Si la carte n'est pas sur le front, rien ne se passe
+	//post : Ne renvoie rien
+	func supprimerCarteFront (carte : Carte){
+		var i :Int = 0
+		while i<6{
+			if carte === self.fr[i]{
+				self.fr[i] = nil
+			}
+			i=i+1
+		}
+	}
 
+	//ajouterCarteFront : Front x String x Carte -> Front
+	//Cette fonction permet d'ajouter une Carte sur la position du Front souhaitée.
+	//pre : Elle prend en entrée un Front, une position de ce Front, et une Carte
+	//post : Si la position n'existe pas, renvoie une ERREUR, si la position contient déjà une carte, on met la nouvelle
+	func ajouterCarteFront (position : String, carte : Carte) throws{
+		switch position {
+			case "F1":
+				self.fr[0] = carte
+			case "F2":
+				self.fr[1] = carte
+			case "F3":
+				self.fr[2] = carte
+			case "A1":
+				self.fr[3] = carte
+			case "A2":
+				self.fr[4] = carte
+			case "A3":
+				self.fr[5] = carte
+			default :
+				throw ShouldNotHappenError.PasUneCase
+		}
+	}
 }
 
 //var F : Front = Front()
