@@ -12,17 +12,17 @@ class Pioche {
 		var listeCarte : [Carte] //liste intermédiaire aidant à l'initialisation de la pioche
 		var i : Int
 		for i in 0...8 {
-			var soldat : Carte = Carte("Soldat")
+			var soldat : Carte = Carte(nom : "Soldat")
 			listeCarte.append(soldat)
 		}
 		i=0
 		for i in 0...5 {
-			var garde : Carte = Carte("Garde")
+			var garde : Carte = Carte(nom : "Garde")
 			listeCarte.append(garde)
 		}
 		i=0
 		for i in 0...4 {
-			var archer : Carte = Carte("Archer")
+			var archer : Carte = Carte(nom : "Archer")
 			listeCarte.append(archer)
 		}
 		i=0
