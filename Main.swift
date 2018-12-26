@@ -6,8 +6,8 @@ enum ShoudNotHappendError : Error{
 }
 
 class Main : Sequence{
-	associatedtype ItMain : IteratorProtocol
-	associatedtype Carte : Carte
+	private var Carte : Carte
+	private var ItMain : IteratorProtocol
 	private var liste : [Carte]
 
 	//init : Carte -> Main
