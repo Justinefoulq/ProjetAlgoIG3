@@ -70,7 +70,7 @@ class Main : Sequence{
 	// pre : Elle prend une Main en entrée
 	// post : renvoie un entier, correspondant au nombre de carte total de la main (0<=i<=6)
 	func nbrCarte() -> Int {
-		return self.main.count
+		return self.liste.count
 	}
 
 	//getCarteMain : Main x String -> (Carte|Vide)
