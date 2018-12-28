@@ -7,7 +7,7 @@ struct ItMain: IteratorProtocol {
     }
 
     mutating func next() -> Carte? {
-        let liste = self.main.getMain
+        let liste = self.main.getMain()
         let carte = liste[i]
         guard i >= 0 && i < 6
             else { return nil }
