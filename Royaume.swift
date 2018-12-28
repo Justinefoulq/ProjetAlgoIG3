@@ -2,7 +2,7 @@ import Foundation
 
 
 class Royaume {
-	private var pile : [Carte]
+	private var file : [Carte]
 	private var cmp : Int
 
 	//init : -> Royaume
@@ -11,7 +11,7 @@ class Royaume {
 	//post : Elle renvoie le royaume, vide
 	init(){
 		self.cmp = 0
-		self.pile = []
+		self.file = []
 	}
 
 	//estVide : Royaume -> Bool
@@ -31,7 +31,7 @@ class Royaume {
 			return nil
 		}
 		else{
-			return self.pile[cmp-1]
+			return self.file[0]
 		}
 	}
 
@@ -40,7 +40,10 @@ class Royaume {
 	//pre : Elle prend en entrée un Royaume
 	//post : Ne renvoie rien
 	func supprimerCarteRoyaume(){
-		self.cmp = self.cmp-1
+		if cmp != 0{
+			self.file.remove(at :0)
+			self.cmp = self.cmp-1
+		}
 	}
 
 	//ajouterCarteRoyaume : Carte x Royaume -> Royaume
@@ -48,7 +51,7 @@ class Royaume {
 	//pre : Elle prend en entrée une Carte et un Royaume
 	//post : Ne renvoie rien
 	func ajouterCarteRoyaume(carte : Carte){
-		self.pile[cmp] = carte
+		self.file[cmp] = carte
 		self.cmp = self.cmp+1
 	}
 
@@ -59,5 +62,4 @@ class Royaume {
 	func nbrCarte() -> Int{
 		return self.cmp
 	}
-
 }
