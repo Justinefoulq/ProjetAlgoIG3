@@ -4,9 +4,32 @@ enum ShouldNotHappenError: Error {
     case PasUneCase
 }
 
-class Front {
+class FrontIterator : IteratorProtocol {
+	let front: Front
+    var i : Int = 0
+
+    init(front: Front) {
+        self.front = front
+    }
+
+    func next() -> Carte? {
+    	let liste = self.front.fr
+        while (self.i < 6) && (liste[i] == nil){
+        	self.i = self.i + 1
+        }
+        if self.i < 0 || self.i >= 6 {
+        	return nil
+        }
+        else{
+        	self.i = self.i + 1
+        	return liste[self.i-1]
+        }
+    }
+}
+
+class Front : Sequence {
 	
-	private var fr : [Carte?]
+	var fr : [Carte?]
 	
 	// init : -> Front
 	// Cette fonction permet de créer un front : le front est le champ de bataille, il se représente avec 6 cases, 3 en première ligne (devant) et 3 en seconde ligne (derrière), les cases de la première ligne sont nommés : F1,F2,F3 ou f1,f2,f3 et ceux de la deuxième ligne sont nommés : A1,A2,A3 ou a1,a2,a3 (c'est comme ça qu'on les appelles dans le main). Autrement dit la casse n'importe pas. Les cases doivent pouvoir etre de type Carte, ou Vide
@@ -18,7 +41,9 @@ class Front {
 
 	// makeItFront : Front -> ItFront
 	// Crée un itérateur sur les cartes du front pour le parcourir dans l'ordre F1,F2,F3,A1,A2,A3
-	//func makeItFront() -> ItFront{}
+	func makeIterator() -> FrontIterator{
+		return FrontIterator(front : self)
+	}
 
 	//estLibre : String x Front -> Bool
 	//Cette fonction permet de savoir si la case selectionnée est valide : sans unité placée dessus, Si jamais la case demandée est en seconde ligne (parmi les A ou a) il faut vérifier qu'il y ait bien une unité sur la case F ou f correspondant.
@@ -106,18 +131,11 @@ class Front {
 	//pre : Elle prend en entrée un Front
 	//post : Ne renvoie rien
 	func reinit (){
-		var i : Int = 0
-		var c : Carte
-		while i<6{
-			if self.fr[i] != nil{
-				c = self.fr[i]!
-				do {
-					try c.setDeg(nbr : 0)
-				} catch {}
-				c.modeDefensif()
-				self.fr[i] = c
-			}
-			i=i+1
+		for carte in self{
+			do {
+				try carte.setDeg(nbr : 0)
+			} catch {}
+			carte.modeDefensif()
 		}
 	}
 
@@ -189,5 +207,29 @@ class Front {
 		}
 	}
 }
-
-//var F : Front = Front()
+/*
+var S : Carte
+try S=Carte(nom : "Soldat")
+var F : Front = Front()
+print(F.estLibre(position : "F1"))
+print(F.estLibre(position : "A1"))
+print(F.estVide())
+var ok : Bool
+try ok=F.estCaseVide(pos : "A1")
+print(ok)
+print(F.getCarteFront(position : "F2"))
+try F.ajouterCarteFront(position : "F1", carte : S)
+print(F.getCarteFront(position : "F1"))
+print(F.estLibre(position : "F1"))
+try ok=F.estCaseVide(pos : "F1")
+print(ok)
+print(F.estVide())
+print(F.peutAttaquer(c : S , positionC : "A1"))
+print(F.peutAttaquer(c : S , positionC : "F3"))
+try S.setDeg(nbr : 1)
+S.modeOffensif()
+try F.ajouterCarteFront(position : "F3", carte : S)
+print(F.getCarteFront(position : "F3")!.getDeg())
+F.reinit()
+print(F.getCarteFront(position : "F3")!.getDeg())
+*/
