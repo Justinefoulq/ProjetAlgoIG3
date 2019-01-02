@@ -1,6 +1,3 @@
-import Foundation
-
-
 class Royaume {
 	private var file : [Carte]
 	private var cmp : Int
@@ -51,7 +48,7 @@ class Royaume {
 	//pre : Elle prend en entrée une Carte et un Royaume
 	//post : Ne renvoie rien
 	func ajouterCarteRoyaume(carte : Carte){
-		self.file[cmp] = carte
+		self.file.append(carte)
 		self.cmp = self.cmp+1
 	}
 
@@ -63,3 +60,17 @@ class Royaume {
 		return self.cmp
 	}
 }
+/*
+var S : Carte
+try S = Carte(nom : "Soldat")
+var A : Carte
+try A = Carte(nom : "Archer")
+var R : Royaume = Royaume()
+print(R.estVide())
+R.ajouterCarteRoyaume(carte : S)
+R.ajouterCarteRoyaume(carte : A)
+print(R.tirerCarte()!.getNom())
+print(R.nbrCarte())
+R.supprimerCarteRoyaume()
+print(R.tirerCarte()!.getNom())
+print(R.nbrCarte())
