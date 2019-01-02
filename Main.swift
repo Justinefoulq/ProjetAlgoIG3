@@ -142,3 +142,44 @@ class Main : Sequence {
 		}
 	}
 }
+//TEST
+/*
+var R : Carte 
+try R = Carte(nom : "Roi1")
+var A : Carte 
+try A = Carte(nom : "Archer")
+var M : Main 
+try M = Main(roi : R)
+var S : Carte
+try S = Carte(nom : "Soldat")
+print(M.getMain())
+print("est vide :")
+print(M.estVide())
+print("est pleine :")
+print(M.estPleine())
+print("est dans la main R :")
+print(M.estDansLaMain(c : R))
+print("est dans la main A :")
+print(M.estDansLaMain(c : A))
+print("nb carte:")
+print(M.nbrCarte())
+print(M.getCarteMain(nomDeLaCarte : "Roi1")!)
+print(M.getCarteMain(nomDeLaCarte : "Archer"))
+M.supprimerCarteMain(c : R)
+print("est vide : ")
+print(M.estVide())
+try M.ajouterCarteMain(c : R)
+try M.ajouterCarteMain(c : A)
+try M.ajouterCarteMain(c : A)
+try M.ajouterCarteMain(c : A)
+try M.ajouterCarteMain(c : A)
+try M.ajouterCarteMain(c : S)
+print("est pleine :")
+print(M.estPleine())
+print(M.getMain())
+print(M.getCarteMain(nomDeLaCarte : "Archer")!)
+print("Attaque S")
+print(S.getAtt(main : M))
+print("Attaque R")
+print(R.getAtt(main : M))
+*/
