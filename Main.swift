@@ -5,9 +5,29 @@ enum ShoudNotHappendError : Error{
 	case MainDejaPleine
 }
 
-class Main : Sequence{
-	private var Carte : Carte
-	private var ItMain : IteratorProtocol
+class MainIterator : IteratorProtocol {
+    let main: Main
+    var i : Int = 0
+
+    init(main: Main) {
+        self.main = main
+    }
+
+    func next() -> Carte? {
+    	let liste = self.main.getMain()
+        if self.i < 0 || self.i >= self.main.getMain().count{
+        	return nil 
+        }
+        else {
+        	self.i = self.i+1
+        	return liste[self.i-1]
+        }
+    }
+}
+
+class Main : Sequence {
+	//private var Carte : Carte
+	//private var ItMain : ItMain
 	private var liste : [Carte]
 
 	//init : Carte -> Main
@@ -19,16 +39,16 @@ class Main : Sequence{
 			self.liste = [roi]
 		}
 		else{
-			throw ShoudNotHappendError.PremiereCartePasRoi
+			throw ShouldNotHappenError.PremiereCartePasRoi
 		}
 	}
-
+	
 	//makeMainIterator : Main -> ItMain
 	// Crée un itérateur sur les cartes de la main pour la parcourir (pas de contrainte sur l'ordre)
-	func makeItMain() -> ItMain {
-		return ItMain(self)
+	func makeIterator() -> MainIterator {
+		return MainIterator(main:self)
 	}
-
+	
 	//getMain : Main -> [Carte]
 	// Renvoie la liste contenant les carte de la main du joueur
 	func getMain() -> [Carte]{
@@ -57,8 +77,8 @@ class Main : Sequence{
 	// post : Renvoie un booléen, True si la carte est présente dans la main, False sinon.
 	func estDansLaMain (c : Carte) -> Bool {
 		var DansLaMain = false
-		for carte in ItMain{
-			if carte == c {
+		for carte in self{
+			if carte === c {
 				DansLaMain = true
 			}
 		}
@@ -81,7 +101,7 @@ class Main : Sequence{
 		var carteMain : Carte? = nil
 		if nomDeLaCarte == "Archer" || nomDeLaCarte == "Garde" || nomDeLaCarte == "Soldat" || nomDeLaCarte == "Roi1" || nomDeLaCarte == "Roi2" {
 
-			for carte in ItMain {
+			for carte in self {
 				if carte.getNom() == nomDeLaCarte {
 					carteMain = carte
 				}
@@ -100,11 +120,11 @@ class Main : Sequence{
 	func supprimerCarteMain(c : Carte) {
 		if !self.estPleine() {
 			var i : Int = 0
-			for carte in ItMain {
-				if carte == c {
+			for carte in self {
+				if carte === c {
 					self.liste.remove(at: i)
 				}
-				i++
+				i=i+1
 			}
 		}
 	}
@@ -118,9 +138,7 @@ class Main : Sequence{
 			self.liste.append(c)
 		}
 		else{
-			throw ShoudNotHappendError.MainDejaPleine
+			throw ShouldNotHappenError.MainDejaPleine
 		}
 	}
-
-
 }
