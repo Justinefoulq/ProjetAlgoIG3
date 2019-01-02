@@ -200,7 +200,7 @@ class Carte {
 	// Cette fonction permet de savoir en fonction de la portée de la carte demandée, si la position demandée est atteignable ou non 
 	// pre : Elle prend en entrée une Carte, suivie de sa position, mais aussi une deuxième position, correspondant à la case ciblée, l'endroit où l'on veut viser (Rappel : Position du front -> F1,F2,F3,A1,A2,A3 et la casse ne compte pas)
 	// post : Elle renvoie un Booléen, True si la case ciblée est à portée, False sinon. Si position inexistante renvoie False aussi.
-	func estaSaportee (positionC : String, positionCible : String) -> Bool{
+	func estaSaPortee (positionC : String, positionCible : String) -> Bool{
 		var estok : Bool = false
 		switch self.getNom() {
 			case "Soldat":
