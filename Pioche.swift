@@ -29,7 +29,7 @@ class Pioche {
 
 
 		for i in 0...19 {
-			let randomIndex = Int(arc4random_uniform(UInt32(listeCarte.count))) //Permet de récupérer un index aléatoire de la listeCarte
+			let randomIndex = Int(arc4random_uniform(listeCarte.count)) //Permet de récupérer un index aléatoire de la listeCarte
 			self.liste.append(listeCarte[ramdomIndex]) //On ajoute dans la pioche une carte aléatoire
 			listeCarte.remove(at: randomIndex) //on supprime la carte de la liste intermédiaire
 		}
