@@ -1,3 +1,5 @@
+import Foundation
+
 class Royaume {
 	private var file : [Carte]
 	private var cmp : Int
