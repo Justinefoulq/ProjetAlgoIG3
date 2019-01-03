@@ -1,4 +1,3 @@
-
 // Dans ce fichier vous trouverez les fonctions utilisées dans le main
 
 // DEBUT // La mise en place du jeu
@@ -97,7 +96,7 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
   var estReponse : Bool = false
 
   print("Ecris le chiffre correspondant à ton choix (1, 2 ou 3)")
-  let rep : String? = readLine()
+  var rep : String? = readLine()
   if let r=rep {
       if (r=="1" || r=="2" || r=="3" || r=="un" || r=="deux" || r=="trois") {
         estReponse = true
@@ -111,7 +110,7 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
   }
   while !estReponse {
     print("Ecris le chiffre correspondant à ton choix (1, 2 ou 3)")
-    let rep : String? = readLine()
+    rep = readLine()
     if let r=rep {
       if (r=="1" || r=="2" || r=="3" || r=="un" || r=="deux" || r=="trois") {
         estReponse = true
@@ -143,11 +142,11 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       let f2 : Front = a.getFront()
       estReponse = false
       print("Choisis la position et donc la carte avec laquelle tu désires attaquer (A1,f2...)")
-      let rep : String? = readLine()
+      rep = readLine()
       if let r1=rep {
         if estPosition(p :r1) { // cf : bases -> ligne 139
           let caseVide : Bool = try! f1.estCaseVide(pos :r1) // cf : Front -> ligne 33
-          if caseVide {
+          if !caseVide {
             guard let c1 : Carte = f1.getCarteFront(position : r1) else {throw ShouldNotHappenError.IsNotPosition} // cf : Front -> ligne 51
             if f2.peutAttaquer(c : c1, positionC : r1) { // cf : Front -> ligne 45
               estReponse = true
@@ -167,11 +166,11 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       }
       while !estReponse {
         print("Choisis la position et donc la carte avec laquelle tu désires attaquer (A1,f2...)")
-        let rep : String? = readLine()
+        rep = readLine()
         if let r1=rep {
           if estPosition(p :r1) { // cf : bases -> ligne 139
             let caseVide : Bool = try! f1.estCaseVide(pos :r1) // cf : Front -> ligne 33
-            if caseVide {
+            if !caseVide {
               guard let c1 : Carte = f1.getCarteFront(position : r1) else {throw ShouldNotHappenError.IsNotPosition} // cf : Front -> ligne 51
               if f2.peutAttaquer(c : c1, positionC : r1) { // cf : Front -> ligne 45
                 estReponse = true
@@ -199,13 +198,13 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       // Choix de la cible
       estReponse = false
       print("Choisis la position et donc la carte que tu désires attaquer (A1,f2...)")
-      let rep2 : String? = readLine()
+      var rep2 = readLine()
       if let r2 = rep2 {
         if estPosition(p :r2) {
           let caseVide : Bool = try! f2.estCaseVide(pos :r2)
-          if caseVide {
+          if !caseVide {
             guard let c2 : Carte = f2.getCarteFront(position : r2) else {throw ShouldNotHappenError.IsNotPosition}
-            if c2.estaSaPortee(positionC : r, positionCible : r2) { // cf : Carte -> ligne 106
+            if c2.estaSaPortee(positionC : r1, positionCible : r2) { // cf : Carte -> ligne 106
               estReponse = true
             }
             else {
@@ -225,13 +224,13 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       }
       while !estReponse {
         print("Choisis la position et donc la carte que tu désires attaquer (A1,f2...)")
-        let rep2 : String? = readLine()
+        rep2 = readLine()
         if let r2 = rep2 {
           if estPosition(p :r2) {
             let caseVide : Bool = try! f2.estCaseVide(pos :r2)
-            if caseVide {
+            if !caseVide {
               guard let c2 : Carte = f2.getCarteFront(position : r2) else {throw ShouldNotHappenError.IsNotPosition}
-              if c2.estaSaPortee(positionC : r, positionCible : r2) { // cf : Carte -> ligne 106
+              if c2.estaSaPortee(positionC : r1, positionCible : r2) { // cf : Carte -> ligne 106
                 estReponse = true
               }
               else {
@@ -253,19 +252,20 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       let r2 = rep2!
       let c2 = f2.getCarteFront(position : r2)!
       // Phase d'attaque
-      finDeLaPartie = finDeLaPartie || attaquer(j : j, cAtt : c1, adv : a, cAdv : c2) // cf : mainDetaille -> ligne 233
+      let RoiMort = attaquer(j : j, cAtt : c1, adv : a, cAdv : c2)
+      finDeLaPartie = finDeLaPartie || RoiMort // cf : mainDetaille -> ligne 233
       // Potentielle phase de Conscription
       finDeLaPartie = try! finDeLaPartie || conscription(adv : a) // cf : mainDetaille -> ligne 257
       // Le joueur désire-t-il encore attaquer ?
       estReponse = false
-      while !estReponse {
+      while !estReponse && !finDeLaPartie{
         print("Veux-tu encore attaquer ? (oui/non)")
-        let rep : String? = readLine()
-        if let r=rep {
+        let rep3 : String? = readLine()
+        if let r=rep3 {
           if (r=="oui" || r=="o" || r=="OUI" || r=="Oui" || r=="ok" || r=="OK" || r=="Ok") {
             estReponse = true
           }
-          else if !(r=="non" || r=="n" || r=="NON" || r=="Non" || r=="Nop") {
+          else if (r=="non" || r=="n" || r=="NON" || r=="Non" || r=="Nop") {
             estReponse = true
             veutAttaquer = false
           }
