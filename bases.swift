@@ -210,7 +210,7 @@ func afficherFrontStat(j : Joueur) {
     f1 += String(F1.getAtt(main : main)) // cf : Carte -> ligne 46
   }
   else {
-    f1 = "Vide"
+    f1 = "     Vide     "
   }
 
   if let F2 = f.getCarteFront(position : "f2") {
@@ -219,7 +219,7 @@ func afficherFrontStat(j : Joueur) {
     f2 += String(F2.getAtt(main : main))
   }
   else {
-    f2 = "Vide"
+    f2 = "     Vide     "
   }
 
   if let F3 = f.getCarteFront(position : "f3") {
@@ -228,7 +228,7 @@ func afficherFrontStat(j : Joueur) {
     f3 += String(F3.getAtt(main : main))
   }
   else {
-    f3 = "Vide"
+    f3 = "     Vide     "
   }
 
 
@@ -238,7 +238,7 @@ func afficherFrontStat(j : Joueur) {
     a1 += String(A1.getAtt(main : main))
   }
   else {
-    a1 = "Vide"
+    a1 = "     Vide     "
   }
 
   if let A2 = f.getCarteFront(position : "a2") {
@@ -247,7 +247,7 @@ func afficherFrontStat(j : Joueur) {
     a2 += String(A2.getAtt(main : main))
   }
   else {
-    a2 = "Vide"
+    a2 = "     Vide     "
   }
 
   if let A3 = f.getCarteFront(position : "a3") {
@@ -256,10 +256,11 @@ func afficherFrontStat(j : Joueur) {
     a3 += String(A3.getAtt(main : main))
   }
   else {
-    a3 = "Vide"
+    a3 = "     Vide     "
   }
 
   // On affiche le Front
+  print (" ")
   print("Voici ton front actuel :")
   print("F1 :" + f1 + "| F2 :" + f2 + "| F3 :" + f3)
   print("A1 :" + a1 + "| A2 :" + a2 + "| A3 :" + a3)
@@ -283,62 +284,62 @@ func afficherFrontAdverse(a : Joueur) {
   if let F1 = f.getCarteFront(position : "f1") { // cf : Front -> ligne 44
     f1 = F1.getNom() // cf : Carte -> ligne 40
     f1 += " : Def="
-    f1 += String(F1.getDef()) // cf : Carte -> ligne 64
+    f1 += String(F1.getDef()-F1.getDeg()) // cf : Carte -> ligne 64
   }
   else {
-    f1 = "Vide"
+    f1 = "     Vide     "
   }
 
   if let F2 = f.getCarteFront(position : "f2") {
     f2 = F2.getNom()
     f2 += " : Def="
-    f2 += String(F2.getDef())
+    f2 += String(F2.getDef()-F2.getDeg())
   }
   else {
-    f2 = "Vide"
+    f2 =  "     Vide     "
   }
 
   if let F3 = f.getCarteFront(position : "f3") {
     f3 = F3.getNom()
     f3 += " : Def="
-    f3 += String(F3.getDef())
+    f3 += String(F3.getDef()-F3.getDeg())
   }
   else {
-    f3 = "Vide"
+    f3 =  "     Vide     "
   }
 
 
   if let A1 = f.getCarteFront(position : "a1") {
     a1 = A1.getNom()
     a1 += " : Def="
-    a1 += String(A1.getDef())
+    a1 += String(A1.getDef()-A1.getDeg())
   }
   else {
-    a1  = "Vide"
+    a1  =  "     Vide     "
   }
 
   if let A2 = f.getCarteFront(position : "a2") {
     a2 = A2.getNom()
     a2 += " : Def="
-    a2 += String(A2.getDef())
+    a2 += String(A2.getDef()-A2.getDeg())
   }
   else {
-    a2 = "Vide"
+    a2 =  "     Vide     "
   }
 
   if let A3 = f.getCarteFront(position : "a3") {
     a3 = A3.getNom()
     a3 += " : Def="
-    a3 += String(A3.getDef())
+    a3 += String(A3.getDef()-A3.getDeg())
   }
   else {
-    a3 = "Vide"
+    a3 =  "     Vide     "
   }
 
   // On affiche le Front
-  print("Voici ton front actuel :")
-  print("F1 :" + f1 + "| F2 :" + f2 + "| F3 :" + f3)
-  print("A1 :" + a1 + "| A2 :" + a2 + "| A3 :" + a3)
+  print("Voici le front actuel de ton adversaire:")
+  print("A3 :" + a3 + "| A2 :" + a2 + "| A1 :" + a1)
+  print("F3 :" + f3 + "| F2 :" + f2 + "| F1 :" + f1)
 }
 
 
@@ -436,9 +437,9 @@ func afficherPortee(c : Carte, pos : String, a : Joueur) {
   }
 
   // On affiche le Front
-  print("Voici ton front actuel :")
-  print("F1 :" + f1 + "| F2 :" + f2 + "| F3 :" + f3)
+  print("Voici le front actuel de l'adversaire:")
   print("A1 :" + a1 + "| A2 :" + a2 + "| A3 :" + a3)
+  print("F1 :" + f1 + "| F2 :" + f2 + "| F3 :" + f3)
 }
 
 
@@ -455,4 +456,3 @@ func afficherStat(c : Carte, main : Main) {
   let portee : String = c.getPortee() // cf : Carte : ligne 70
   print("   \(nom)\nAttaque : \(att)\nDéfense en mode défensif : \(defdef)\nDéfense en mode offensif : \(defoff)\nPortée : \(portee)")
 }
-
