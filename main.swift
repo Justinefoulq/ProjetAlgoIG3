@@ -1,40 +1,57 @@
 // import leNomDeVotrePackage
-
 print("Bienvenue dans Art Of War !")
 
 // MISE EN PLACE //
-
 print("Pour démarrer cette partie, je vais avoir besoin de vos deux noms.")
 
 // Joueur 1
 var estReponse : Bool = false
+print("Entrez le nom du premier joueur : ")
+let rep1 : String? = readLine()
+if let _ : String = rep1 {
+  estReponse = true
+}
+else {
+  print("Oups, une erreur s'est glissée dans votre réponse...")
+}
 while !estReponse {
-    var rep1 : String? = readLine("Entrez le nom du premier joueur : ")
-    if let nom1 : String = rep1 {
-      estReponse = true
-    }
-    else {
-      print("Oups, une erreur s'est glissée dans votre réponse...")
-    }
+  print("Entrez le nom du premier joueur : ")
+  let rep1 : String? = readLine()
+  if let _ : String = rep1 {
+    estReponse = true
+  }
+  else {
+    print("Oups, une erreur s'est glissée dans votre réponse...")
+  }
 } // Arrêt : Réponse donnée
-let roi1 : Carte = try! Carte("Roi1") // cf : Carte -> ligne 34
-let joueur1 : Joueur = try! miseEnPlace(nom : nom1, carte : roi1) // cf : mainDetaille -> ligne 11
-
+let nom1 = rep1!
+let roi1 : Carte = try! Carte(nom : "Roi1") // cf : Carte -> ligne 34
+let joueur1 : Joueur = try! miseEnPlace(nom : nom1, roi : roi1) // cf : mainDetaille -> ligne 11
 // Joueur 2
 estReponse = false
+print("Entrez le nom de l'autre joueur : ")
+let rep2 : String? = readLine()
+if let _ : String = rep2 {
+  estReponse = true
+}
+else {
+  print("Oups, une erreur s'est glissée dans votre réponse...")
+}
 while !estReponse {
-    var rep2 : String? = readLine("Entrez le nom de l'autre joueur : ")
-    if let nom2 : String = rep2 {
-      estReponse = true
-    }
-    else {
-      print("Oups, une erreur s'est glissée dans votre réponse...")
-    }
+  print("Entrez le nom de l'autre joueur : ")
+  let rep2 : String? = readLine()
+  if let _ : String = rep2 {
+    estReponse = true
+  }
+  else {
+    print("Oups, une erreur s'est glissée dans votre réponse...")
+  }
 } // Arrêt : Réponse donnée
-let roi2 : Carte = try! Carte("Roi2")
-let joueur2 : Joueur = try! miseEnPlace(nom : nom2, carte : roi2)
+let nom2 = rep2!
+let roi2 : Carte = try! Carte(nom :"Roi2")
+let joueur2 : Joueur = try! miseEnPlace(nom : nom2, roi : roi2)
 
-print("Ravi de te revoir + \(nom1+), à moins que ce ne soit quelqu'un d'autre...")
+print("Ravi de te revoir " + nom1 + " à moins que ce ne soit quelqu'un d'autre...")
 print("J'ai pas la mémoire des visages !")
 print("En tout cas, \(nom2) et toi allez vous affronter sur le Front.")
 print("Vous piocherez des cartes que vous pourrez garder dans votre main.")
@@ -51,7 +68,6 @@ print()
 print("Il est temps de commencer. De manière totalement arbitraire et puisque tu me dis quelque chose, \(nom1) à toi l'honneur !")
 
 // TOUR DES JOUEURS //
-
 var joueur : Joueur = joueur1
 var adversaire : Joueur = joueur2
 var tmp : Joueur
@@ -60,7 +76,7 @@ var resultat : (Bool, Joueur?) = (false, nil)
 var finDeLaPartie : Bool = false
 
 while !finDeLaPartie {
-  if joueur == joueur1 {
+  if joueur === joueur1 {
     i+=1
   }
   print("\n\n\n")
@@ -72,7 +88,6 @@ while !finDeLaPartie {
   joueur=adversaire
   adversaire=tmp
 } // Arrêt : Partie Terminée
-
 // ANNONCE DU VAINQUEUR //
 if let vainqueur : Joueur = resultat.1 {
   print("La victoire reviens à \(vainqueur.getNom()), toutes mes félicitations !")
