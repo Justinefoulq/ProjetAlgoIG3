@@ -219,15 +219,27 @@ class Carte {
       case "Soldat":
         switch positionC {
           case "F1": 
-            if positionCible == "F3" {
+            if positionCible == "F3" || positionCible == "f3"{
               estok = true
             }
           case "F2":
-            if positionCible == "F2" {
+            if positionCible == "F2" || positionCible == "f2"{
               estok = true
             }
           case "F3":
-            if positionCible == "F1" {
+            if positionCible == "F1" || positionCible == "f1"{
+              estok = true
+            }
+          case "f1": 
+            if positionCible == "F3" || positionCible == "f3"{
+              estok = true
+            }
+          case "f2":
+            if positionCible == "F2" || positionCible == "f2"{
+              estok = true
+            }
+          case "f3":
+            if positionCible == "F1" || positionCible == "f1"{
               estok = true
             }
           default:
@@ -236,15 +248,27 @@ class Carte {
       case "Garde":
         switch positionC {
           case "F1": 
-            if positionCible == "F3" {
+            if positionCible == "F3" || positionCible == "f3"{
               estok = true
             }
           case "F2":
-            if positionCible == "F2" {
+            if positionCible == "F2" || positionCible == "f2"{
               estok = true
             }
           case "F3":
-            if positionCible == "F1" {
+            if positionCible == "F1" || positionCible == "f1"{
+              estok = true
+            }
+          case "f1": 
+            if positionCible == "F3" || positionCible == "f3"{
+              estok = true
+            }
+          case "f2":
+            if positionCible == "F2" || positionCible == "f2"{
+              estok = true
+            }
+          case "f3":
+            if positionCible == "F1" || positionCible == "f1"{
               estok = true
             }
           default:
@@ -254,27 +278,51 @@ class Carte {
       case "Archer":
         switch positionC {
           case "F1":
-            if (positionCible == "A2") || (positionCible == "F1"){
+            if (positionCible == "A2") || (positionCible == "F1") || (positionCible == "a2") || (positionCible == "f1"){
               estok = true
             }
           case "F2":
-            if (positionCible == "A1") || (positionCible == "A3"){
+            if (positionCible == "A1") || (positionCible == "A3") || (positionCible == "a1") || (positionCible == "a3"){
               estok = true
             }
           case "F3":
-            if (positionCible == "A2") || (positionCible == "F3"){
+            if (positionCible == "A2") || (positionCible == "F3") || (positionCible == "a2") || (positionCible == "f3"){
               estok = true
             }
           case "A1":
-            if (positionCible == "F2"){
+            if (positionCible == "F2") || positionCible == "f2"{
               estok = true
             }
           case "A2":
-            if (positionCible == "F3") || (positionCible == "F1"){
+            if (positionCible == "F3") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f1"){
               estok = true
             }
           case "A3":
-            if (positionCible == "F2"){
+            if (positionCible == "F2") || positionCible == "f2"{
+              estok = true
+            }
+          case "f1":
+            if (positionCible == "A2") || (positionCible == "F1") || (positionCible == "a2") || (positionCible == "f1"){
+              estok = true
+            }
+          case "f2":
+            if (positionCible == "A1") || (positionCible == "A3") || (positionCible == "a1") || (positionCible == "a3"){
+              estok = true
+            }
+          case "f3":
+            if (positionCible == "A2") || (positionCible == "F3") || (positionCible == "a2") || (positionCible == "f3"){
+              estok = true
+            }
+          case "a1":
+            if (positionCible == "F2") || positionCible == "f2"{
+              estok = true
+            }
+          case "a2":
+            if (positionCible == "F3") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f1"){
+              estok = true
+            }
+          case "a3":
+            if (positionCible == "F2") || positionCible == "f2"{
               estok = true
             }
           default:
@@ -283,27 +331,51 @@ class Carte {
       case "Roi1":
         switch positionC {
           case "F1":
-            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "A3") || (positionCible == "F1"){
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "A3") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "a3") || (positionCible == "f1"){
               estok = true
             }
           case "F2":
-            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1") || (positionCible == "A2"){
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1") || (positionCible == "A2") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1") || (positionCible == "a2"){
               estok = true
             }
           case "F3":
-            if (positionCible == "F1") || (positionCible == "F2") || (positionCible == "A1") || (positionCible == "F3"){
+            if (positionCible == "F1") || (positionCible == "F2") || (positionCible == "A1") || (positionCible == "F3") || (positionCible == "f1") || (positionCible == "f2") || (positionCible == "a1") || (positionCible == "f3"){
               estok = true
             }
           case "A1":
-            if (positionCible == "F3"){
+            if (positionCible == "F3") || positionCible == "f3"{
               estok = true
             }
           case "A2":
-            if (positionCible == "F2"){
+            if (positionCible == "F2") || positionCible == "f2"{
               estok = true
             }
           case "A3":
-            if (positionCible == "F1"){
+            if (positionCible == "F1") || positionCible == "f1"{
+              estok = true
+            }
+          case "f1":
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "A3") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "a3") || (positionCible == "f1"){
+              estok = true
+            }
+          case "f2":
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1") || (positionCible == "A2") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1") || (positionCible == "a2"){
+              estok = true
+            }
+          case "f3":
+            if (positionCible == "F1") || (positionCible == "F2") || (positionCible == "A1") || (positionCible == "F3") || (positionCible == "f1") || (positionCible == "f2") || (positionCible == "a1") || (positionCible == "f3"){
+              estok = true
+            }
+          case "a1":
+            if (positionCible == "F3") || positionCible == "f3"{
+              estok = true
+            }
+          case "a2":
+            if (positionCible == "F2") || positionCible == "f2"{
+              estok = true
+            }
+          case "a3":
+            if (positionCible == "F1") || positionCible == "f1"{
               estok = true
             }
           default:
@@ -312,15 +384,27 @@ class Carte {
       case "Roi2":
         switch positionC {
           case "F1":
-            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1"){
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1"){
               estok = true
             }
           case "F2":
-            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1"){
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1"){
               estok = true
             }
           case "F3":
-            if (positionCible == "F1") || (positionCible == "F2") || (positionCible == "F3"){
+            if (positionCible == "F1") || (positionCible == "F2") || (positionCible == "F3") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1"){
+              estok = true
+            }
+          case "f1":
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1"){
+              estok = true
+            }
+          case "f2":
+            if (positionCible == "F3") || (positionCible == "F2") || (positionCible == "F1") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1"){
+              estok = true
+            }
+          case "f3":
+            if (positionCible == "F1") || (positionCible == "F2") || (positionCible == "F3") || (positionCible == "f3") || (positionCible == "f2") || (positionCible == "f1"){
               estok = true
             }
           default:
@@ -1003,6 +1087,12 @@ class Joueur {
             positionMobiliser = "F2"
           case "A3":
             positionMobiliser = "F3"
+          case "a1":
+            positionMobiliser = "F1"
+          case "a2":
+            positionMobiliser = "F2"
+          case "a3":
+            positionMobiliser = "F3"
           default : 
             positionMobiliser = position
         }
@@ -1200,7 +1290,7 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       if let r1=rep {
         if estPosition(p :r1) { // cf : bases -> ligne 139
           let caseVide : Bool = try! f1.estCaseVide(pos :r1) // cf : Front -> ligne 33
-          if caseVide {
+          if !caseVide {
             guard let c1 : Carte = f1.getCarteFront(position : r1) else {throw ShouldNotHappenError.IsNotPosition} // cf : Front -> ligne 51
             if f2.peutAttaquer(c : c1, positionC : r1) { // cf : Front -> ligne 45
               estReponse = true
@@ -1224,7 +1314,7 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
         if let r1=rep {
           if estPosition(p :r1) { // cf : bases -> ligne 139
             let caseVide : Bool = try! f1.estCaseVide(pos :r1) // cf : Front -> ligne 33
-            if caseVide {
+            if !caseVide {
               guard let c1 : Carte = f1.getCarteFront(position : r1) else {throw ShouldNotHappenError.IsNotPosition} // cf : Front -> ligne 51
               if f2.peutAttaquer(c : c1, positionC : r1) { // cf : Front -> ligne 45
                 estReponse = true
@@ -1256,9 +1346,9 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       if let r2 = rep2 {
         if estPosition(p :r2) {
           let caseVide : Bool = try! f2.estCaseVide(pos :r2)
-          if caseVide {
+          if !caseVide {
             guard let c2 : Carte = f2.getCarteFront(position : r2) else {throw ShouldNotHappenError.IsNotPosition}
-            if c2.estaSaPortee(positionC : r, positionCible : r2) { // cf : Carte -> ligne 106
+            if c2.estaSaPortee(positionC : r1, positionCible : r2) { // cf : Carte -> ligne 106
               estReponse = true
             }
             else {
@@ -1282,9 +1372,9 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
         if let r2 = rep2 {
           if estPosition(p :r2) {
             let caseVide : Bool = try! f2.estCaseVide(pos :r2)
-            if caseVide {
+            if !caseVide {
               guard let c2 : Carte = f2.getCarteFront(position : r2) else {throw ShouldNotHappenError.IsNotPosition}
-              if c2.estaSaPortee(positionC : r, positionCible : r2) { // cf : Carte -> ligne 106
+              if c2.estaSaPortee(positionC : r1, positionCible : r2) { // cf : Carte -> ligne 106
                 estReponse = true
               }
               else {
@@ -1306,19 +1396,20 @@ func action(j : Joueur, a : Joueur) throws -> Bool {
       let r2 = rep2!
       let c2 = f2.getCarteFront(position : r2)!
       // Phase d'attaque
-      finDeLaPartie = finDeLaPartie || attaquer(j : j, cAtt : c1, adv : a, cAdv : c2) // cf : mainDetaille -> ligne 233
+      let RoiMort = attaquer(j : j, cAtt : c1, adv : a, cAdv : c2)
+      finDeLaPartie = finDeLaPartie || RoiMort // cf : mainDetaille -> ligne 233
       // Potentielle phase de Conscription
       finDeLaPartie = try! finDeLaPartie || conscription(adv : a) // cf : mainDetaille -> ligne 257
       // Le joueur désire-t-il encore attaquer ?
       estReponse = false
-      while !estReponse {
+      while !estReponse && !finDeLaPartie{
         print("Veux-tu encore attaquer ? (oui/non)")
-        let rep : String? = readLine()
-        if let r=rep {
+        let rep3 : String? = readLine()
+        if let r=rep3 {
           if (r=="oui" || r=="o" || r=="OUI" || r=="Oui" || r=="ok" || r=="OK" || r=="Ok") {
             estReponse = true
           }
-          else if !(r=="non" || r=="n" || r=="NON" || r=="Non" || r=="Nop") {
+          else if (r=="non" || r=="n" || r=="NON" || r=="Non" || r=="Nop") {
             estReponse = true
             veutAttaquer = false
           }
@@ -1715,7 +1806,7 @@ func afficherFrontAdverse(a : Joueur) {
   if let F1 = f.getCarteFront(position : "f1") { // cf : Front -> ligne 44
     f1 = F1.getNom() // cf : Carte -> ligne 40
     f1 += " : Def="
-    f1 += String(F1.getDef()) // cf : Carte -> ligne 64
+    f1 += String(F1.getDef()-F1.getDeg()) // cf : Carte -> ligne 64
   }
   else {
     f1 = "     Vide     "
@@ -1724,7 +1815,7 @@ func afficherFrontAdverse(a : Joueur) {
   if let F2 = f.getCarteFront(position : "f2") {
     f2 = F2.getNom()
     f2 += " : Def="
-    f2 += String(F2.getDef())
+    f2 += String(F2.getDef()-F2.getDeg())
   }
   else {
     f2 =  "     Vide     "
@@ -1733,7 +1824,7 @@ func afficherFrontAdverse(a : Joueur) {
   if let F3 = f.getCarteFront(position : "f3") {
     f3 = F3.getNom()
     f3 += " : Def="
-    f3 += String(F3.getDef())
+    f3 += String(F3.getDef()-F3.getDeg())
   }
   else {
     f3 =  "     Vide     "
@@ -1743,7 +1834,7 @@ func afficherFrontAdverse(a : Joueur) {
   if let A1 = f.getCarteFront(position : "a1") {
     a1 = A1.getNom()
     a1 += " : Def="
-    a1 += String(A1.getDef())
+    a1 += String(A1.getDef()-A1.getDeg())
   }
   else {
     a1  =  "     Vide     "
@@ -1752,7 +1843,7 @@ func afficherFrontAdverse(a : Joueur) {
   if let A2 = f.getCarteFront(position : "a2") {
     a2 = A2.getNom()
     a2 += " : Def="
-    a2 += String(A2.getDef())
+    a2 += String(A2.getDef()-A2.getDeg())
   }
   else {
     a2 =  "     Vide     "
@@ -1761,7 +1852,7 @@ func afficherFrontAdverse(a : Joueur) {
   if let A3 = f.getCarteFront(position : "a3") {
     a3 = A3.getNom()
     a3 += " : Def="
-    a3 += String(A3.getDef())
+    a3 += String(A3.getDef()-A3.getDeg())
   }
   else {
     a3 =  "     Vide     "
@@ -1769,8 +1860,8 @@ func afficherFrontAdverse(a : Joueur) {
 
   // On affiche le Front
   print("Voici le front actuel de ton adversaire:")
-  print("A1 :" + a1 + "| A2 :" + a2 + "| A3 :" + a3)
-  print("F1 :" + f1 + "| F2 :" + f2 + "| F3 :" + f3)
+  print("A3 :" + a3 + "| A2 :" + a2 + "| A1 :" + a1)
+  print("F3 :" + f3 + "| F2 :" + f2 + "| F1 :" + f1)
 }
 
 
@@ -1868,9 +1959,9 @@ func afficherPortee(c : Carte, pos : String, a : Joueur) {
   }
 
   // On affiche le Front
-  print("Voici ton front actuel :")
-  print("F1 :" + f1 + "| F2 :" + f2 + "| F3 :" + f3)
+  print("Voici le front actuel de l'adversaire:")
   print("A1 :" + a1 + "| A2 :" + a2 + "| A3 :" + a3)
+  print("F1 :" + f1 + "| F2 :" + f2 + "| F3 :" + f3)
 }
 
 
