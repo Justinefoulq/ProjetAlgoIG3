@@ -101,3 +101,4 @@ print("Art Of War et moi-même vous souhaitons une bonne continuation,")
 print("A très bientôt !")
 print("\n \n \n")
 print("Crédits : Vincent VANBALBERGHE et Mathieu VEBER au codage, Takashi SAKAUE et Souya NAITO pour le jeu et Christophe FIORIO pour notre soudaine motivation à le coder !")
+
