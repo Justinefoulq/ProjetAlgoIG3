@@ -30,6 +30,11 @@ class Pioche {
 
 		for i in 0...19 {
 			let randomIndex = Int(arc4random_uniform(listeCarte.count)) //Permet de récupérer un index aléatoire de la listeCarte
+			//1 let randomIndex = Int.random(in: 1 ... listeCarte.count) - 1
+			
+			//2 En plusieurs lignes : 
+			//let randomNum:UInt32 = arc4random_uniform(100)
+			//let randomIndex:Int = Int(randomNum)
 			self.liste.append(listeCarte[ramdomIndex]) //On ajoute dans la pioche une carte aléatoire
 			listeCarte.remove(at: randomIndex) //on supprime la carte de la liste intermédiaire
 		}
